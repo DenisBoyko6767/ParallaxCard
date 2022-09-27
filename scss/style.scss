@@ -1,0 +1,261 @@
+@import "_null";
+@import "_common";
+@import "_mixin";
+@import "_popup";
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap');
+
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontFamily: 'Kanit';
+
+
+$fontSize: 18px;
+//</Шрифт по умолчанию>==========================================================================================
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-size: $fontSize;
+	font-family: $fontFamily;
+	line-height: 130%;
+	font-weight: 400;
+	color: #222;
+	background: url('../img/bg.jpg') center/cover no-repeat;
+	color: rgb(253, 253, 253);
+
+	&._lock {
+		overflow: hidden;
+	}
+
+	&::-webkit-scrollbar {
+		width: 10px;
+		backdrop-filter: blur(3px);
+
+		/* ширина всей полосы прокрутки */
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: rgba(72, 196, 201, 0.247);
+		border-radius: 10px;
+		overflow: hidden;
+		backdrop-filter: blur(3px);
+		/* цвет зоны отслеживания */
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: rgba(29, 29, 29, 0.692);
+		/* цвет бегунка */
+		border-radius: 10px 10px 10px 10px;
+		backdrop-filter: blur(3px);
+		cursor: pointer;
+		/* округлось бегунка */
+		//border: 3px solid orange;  /* отступ вокруг бегунка */
+	}
+}
+
+.wrapper {
+	position: relative;
+	min-height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background-color: rgba(70, 131, 180, 0.486);
+	justify-content: center;
+	color: #222;
+	align-items: center;
+}
+
+//========================================================================================================================================================
+
+.bg {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	z-index: 1;
+
+	img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.card-wrapper {
+	position: relative;
+	z-index: 5;
+	perspective: 1000px;
+}
+
+.card {
+	position: relative;
+	//overflow: hidden;
+	transform-style: preserve-3d;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(255, 255, 255, 0.185);
+		border-radius: 36px;
+		backdrop-filter: blur(6px);
+	}
+
+	border-radius: 36px;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.507);
+	padding: 40px 55px 40px 55px;
+	perspective: 1000px;
+
+	&__container {
+		padding: 70px;
+		transform-style: preserve-3d;
+	}
+
+	&__avatar {
+		transition: all .3s ease 0s;
+		width: 200px;
+		height: 200px;
+		border-radius: 1000px;
+		position: relative;
+		overflow: hidden;
+		margin: 0 auto;
+		box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.705);
+		margin-bottom: 40px;
+
+		img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__info{
+		transition: all .3s ease 0s;
+		transform-style: preserve-3d;
+	}
+
+	&__username {
+		font-size: 36px;
+		color: #222;
+		font-weight: 700;
+		text-align: center;
+		//transform-style: preserve-3d;
+		position: relative;
+		margin-bottom: 30px;	
+	}
+
+	&__subject {
+		position: relative;
+		font-weight: 400;
+		text-align: center;
+		font-size: 18px;
+		margin-bottom: 20px;
+	}
+
+	&__useradress {
+		position: relative;
+		text-align: center;
+		font-size: 16px;
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		margin-bottom: 45px;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 24px;
+			height: 24px;
+			background: url('../img/pin.png') center no-repeat;
+		}
+	}
+
+	&__social {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		gap: 20px;
+		margin-bottom: 55px;
+	}
+
+	&__link {
+		position: relative;
+		border-radius: 18px;
+		overflow: hidden;
+		display: inline-block;
+		transform: scale(0.8);
+		transition: transform .3s ease 0s;
+		&:hover{
+			transform: scale(1.1);
+		}
+		img {
+			transition: opacity .2s ease 0s;
+
+			&:hover {
+				opacity: 0.7;
+			}
+		}
+	}
+
+	&__buttons {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		gap: 30px;
+	}
+
+	&__button {
+		padding: 10px 50px;
+		font-weight: 700;
+		border-radius: 1000px;
+		font-size: 18px;
+		color: #fff;
+		transition: opacity .2s ease 0s;
+		&:hover{
+		  opacity: 0.7;
+		}
+
+		&:nth-child(1) {
+			background: linear-gradient(196deg, rgba(32,212,188,1) 0%, rgba(42,94,232,1) 100%);
+		}
+
+		&:nth-child(2) {
+			background: linear-gradient(68deg, rgba(212,44,19,1) 0%, rgba(196,131,38,1) 100%);
+		}
+	}
+}
+
+
+.status {
+
+	transition: all .3s ease 0s;
+	position: relative;
+	display: flex;
+	gap: 30px;
+	justify-content: center;
+	margin-bottom: 55px;
+
+	&__col {
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__number {
+		font-weight: 700;
+		font-size: 32px;
+		margin-bottom: 30px;
+	}
+
+	&__subtitle {}
+}
